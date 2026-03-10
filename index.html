@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RPS FPS</title>
+  <link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+
+<canvas id="gameCanvas"></canvas>
+<div id="dmg-flash"></div>
+
+<div id="ui">
+  <div id="crosshair"></div>
+
+  <div id="hud-top">
+    <div id="score-display">SCORE <span id="score-val">0</span></div>
+    <div id="wave-display">WAVE <div class="wn" id="wave-val">1</div></div>
+    <div id="health-container">
+      <div id="health-label">HP</div>
+      <div id="health-bar-bg"><div id="health-bar" style="width:100%"></div></div>
+      <div id="health-val">100</div>
+    </div>
+  </div>
+
+  <div id="weapon-hud">
+    <div class="weapon-slot rock active" id="slot-rock">
+      <div class="weapon-emoji">🪨</div>
+      <div class="weapon-name">Rock</div>
+      <div class="weapon-stats">DMG:40 HP:3<br>FAST · SHORT</div>
+      <div class="cooldown-bar-bg"><div class="cooldown-bar rock-cd" id="cd-rock" style="width:100%"></div></div>
+      <div class="weapon-key">[1]</div>
+    </div>
+    <div class="weapon-slot paper" id="slot-paper">
+      <div class="weapon-emoji">📄</div>
+      <div class="weapon-name">Paper</div>
+      <div class="weapon-stats">DMG:25 HP:2<br>MED · MED</div>
+      <div class="cooldown-bar-bg"><div class="cooldown-bar paper-cd" id="cd-paper" style="width:100%"></div></div>
+      <div class="weapon-key">[2]</div>
+    </div>
+    <div class="weapon-slot scissors" id="slot-scissors">
+      <div class="weapon-emoji">✂️</div>
+      <div class="weapon-name">Scissors</div>
+      <div class="weapon-stats">DMG:15 HP:1<br>SLOW · LONG</div>
+      <div class="cooldown-bar-bg"><div class="cooldown-bar scissors-cd" id="cd-scissors" style="width:100%"></div></div>
+      <div class="weapon-key">[3]</div>
+    </div>
+  </div>
+
+  <div id="killfeed"></div>
+  <div id="hitmarker">✕</div>
+  <div id="wave-announce"></div>
+  <div id="lock-msg">CLICK ANYWHERE TO PLAY</div>
+  <canvas id="minimap"></canvas>
+</div>
+
+<!-- Start Screen -->
+<div class="overlay" id="start-screen">
+  <h1 style="color:#e63946">RPS FPS</h1>
+  <div class="sub">ROCK · PAPER · SCISSORS · SHOOTER</div>
+  <div class="rps-cards">
+    <div class="rcard rock-c">
+      <div class="em">🪨</div><div class="rn">Rock</div>
+      <div class="rs">DMG:40 · HP:3<br>Fast CD · Short<br>Close Range</div>
+      <div class="rb">Beats ✂️</div>
+    </div>
+    <div class="rcard paper-c">
+      <div class="em">📄</div><div class="rn">Paper</div>
+      <div class="rs">DMG:25 · HP:2<br>Med CD · Med<br>All-Rounder</div>
+      <div class="rb">Beats 🪨</div>
+    </div>
+    <div class="rcard scissors-c">
+      <div class="em">✂️</div><div class="rn">Scissors</div>
+      <div class="rs">DMG:15 · HP:1<br>Slow CD · Long<br>Sniper</div>
+      <div class="rb">Beats 📄</div>
+    </div>
+  </div>
+  <div class="instr">
+    <span class="k">W A S D</span> Move &nbsp;
+    <span class="k">MOUSE</span> Look &nbsp;
+    <span class="k">LMB</span> Shoot<br>
+    <span class="k">1</span> Rock &nbsp;
+    <span class="k">2</span> Paper &nbsp;
+    <span class="k">3</span> Scissors &nbsp;
+    <span class="k">SCROLL</span> Switch<br><br>
+    Counter projectiles chip enemy shot HP — killing blow pierces through.<br>
+    Enemies use the same RPS rules against you!
+  </div>
+  <button class="sbtn" id="start-btn">START GAME</button>
+</div>
+
+<!-- Game Over Screen -->
+<div class="overlay" id="game-over-screen" style="display:none">
+  <h1 style="color:#e63946">GAME OVER</h1>
+  <div class="sub">YOU HAVE BEEN DEFEATED</div>
+  <div id="final-score">0</div>
+  <div id="wave-reached">REACHED WAVE 1</div>
+  <button class="sbtn" id="restart-btn">PLAY AGAIN</button>
+</div>
+
+<!-- Load scripts in order -->
+<script src="src/config.js"></script>
+<script src="src/map.js"></script>
+<script src="src/assets.js"></script>
+<script src="src/renderer.js"></script>
+<script src="src/game.js"></script>
+
+</body>
+</html>
