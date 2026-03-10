@@ -78,7 +78,17 @@ canvas { display: block; }
 .weapon-slot.rock.active           { border-color: #cd7f3288; box-shadow: 0 0 18px rgba(205,127,50,.18); }
 .weapon-slot.paper.active          { border-color: #a8d8ea88; box-shadow: 0 0 18px rgba(168,216,234,.18); }
 .weapon-slot.scissors.active       { border-color: #e8c5c588; box-shadow: 0 0 18px rgba(232,197,197,.18); }
-.weapon-emoji  { font-size: 26px; line-height: 1; }
+
+.weapon-emoji { font-size: 26px; line-height: 1; }
+
+/* Image inside weapon HUD slot */
+.weapon-emoji img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  display: block;
+}
+
 .weapon-name   { font-family: 'Orbitron', sans-serif; font-size: 7px; letter-spacing: 2px; color: #555; }
 .weapon-slot.active .weapon-name   { color: #999; }
 .weapon-stats  { font-size: 7px; color: #444; text-align: center; line-height: 1.7; }
@@ -177,10 +187,29 @@ canvas { display: block; }
   border: 1px solid #1a1a1a; padding: 11px 14px;
   border-radius: 3px; text-align: center; min-width: 105px;
 }
+
+/* Large image in card centre */
 .rcard .em { font-size: 24px; margin-bottom: 5px; }
+.rcard .em img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
 .rcard .rn { font-family: 'Orbitron', sans-serif; font-size: 8px; letter-spacing: 2px; color: #666; margin-bottom: 5px; }
 .rcard .rs { font-size: 9px; color: #444; line-height: 1.9; }
+
+/* Small image in "Beats X" line */
 .rcard .rb { font-size: 9px; margin-top: 5px; }
+.rcard .rb img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
 .rock-c     { border-color: #cd7f3233; }
 .paper-c    { border-color: #a8d8ea33; }
 .scissors-c { border-color: #e8c5c533; }
