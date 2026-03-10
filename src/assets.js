@@ -49,6 +49,13 @@
 //
 // ============================================================
 
+const rockImg = new Image();
+const paperImg = new Image();
+const scissorImg = new Image();
+rockImg.src = 'assets/projectiles/rock.png';
+paperImg.src = 'assets/projectiles/paper.png';
+scissorImg.src = 'assets/projectiles/scissors.png';
+
 const ASSETS = {
 
   // ── PROJECTILE VISUALS ────────────────────────────────────
@@ -66,14 +73,7 @@ const ASSETS = {
        */
       draw(ctx, x, y, size, hpRatio) {
         ctx.globalAlpha = 0.4 + hpRatio * 0.6;
-        ctx.shadowBlur  = 14;
-        ctx.shadowColor = CONFIG.weapons.rock.color;
-        ctx.fillStyle   = CONFIG.weapons.rock.color;
-
-        // Rough hexagonal boulder shape
-        ctx.beginPath();
-        hexPoly(ctx, x, y, size, 6);
-        ctx.fill();
+        ctx.drawImage(rockImg, x - size, y - size, size * 2, size * 2);
       },
     },
 
@@ -83,12 +83,7 @@ const ASSETS = {
        */
       draw(ctx, x, y, size, hpRatio) {
         ctx.globalAlpha = 0.4 + hpRatio * 0.6;
-        ctx.shadowBlur  = 14;
-        ctx.shadowColor = CONFIG.weapons.paper.color;
-        ctx.fillStyle   = CONFIG.weapons.paper.color;
-
-        // Thin rectangle (flying sheet)
-        ctx.fillRect(x - size * 1.3, y - size * 0.5, size * 2.6, size);
+        ctx.drawImage(paperImg, x - size, y - size, size * 2, size * 2);
       },
     },
 
@@ -98,24 +93,7 @@ const ASSETS = {
        */
       draw(ctx, x, y, size, hpRatio) {
         ctx.globalAlpha = 0.4 + hpRatio * 0.6;
-        ctx.shadowBlur  = 14;
-        ctx.shadowColor = CONFIG.weapons.scissors.color;
-        ctx.fillStyle   = CONFIG.weapons.scissors.color;
-
-        // Two blade triangles (V-shape pointing right)
-        ctx.beginPath();
-        ctx.moveTo(x + size,       y);
-        ctx.lineTo(x - size * 0.6, y - size * 0.65);
-        ctx.lineTo(x - size * 0.3, y);
-        ctx.closePath();
-        ctx.fill();
-
-        ctx.beginPath();
-        ctx.moveTo(x + size,       y);
-        ctx.lineTo(x - size * 0.6, y + size * 0.65);
-        ctx.lineTo(x - size * 0.3, y);
-        ctx.closePath();
-        ctx.fill();
+        ctx.drawImage(scissorImg, x - size, y - size, size * 2, size * 2);
       },
     },
 
