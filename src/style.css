@@ -189,13 +189,20 @@ canvas { display: block; }
 }
 
 /* Large image in card centre */
-.rcard .em { font-size: 24px; margin-bottom: 5px; }
+.rcard .em {
+  font-size: 24px;
+  margin-bottom: 5px;
+  width: 48px;
+  height: 48px;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+}
 .rcard .em img {
   width: 48px;
   height: 48px;
   object-fit: contain;
   display: block;
-  margin: 0 auto;
 }
 
 .rcard .rn { font-family: 'Orbitron', sans-serif; font-size: 8px; letter-spacing: 2px; color: #666; margin-bottom: 5px; }
